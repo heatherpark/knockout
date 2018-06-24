@@ -4,15 +4,30 @@ import { expect } from 'chai';
 import { next, setEntries, vote } from './core';
 
 describe('application logic', () => {
+  let state;
+
+  beforeEach(() => {
+    state = {
+      entries: [],
+      vote: {
+        pair: [],
+        tally: {}
+      }
+    };
+  });
+
+  afterEach(() => {
+    state = {
+      entries: [],
+      vote: {
+        pair: [],
+        tally: {}
+      }
+    };
+  });
+
   describe('setEntries', () => {
     it('adds the entries to the state', () => {
-      const state = {
-        entries: [],
-        vote: {
-          pair: [],
-          tally: {}
-        }
-      };
       const entries = ['Germany', 'Spain'];
       const nextState = setEntries(state, entries);
 
@@ -28,13 +43,7 @@ describe('application logic', () => {
 
   describe('next', () => {
     it('takes the next two entries under vote', () => {
-      const state = {
-        entries: ['Germany', 'Spain', 'England'],
-        vote: {
-          pair: [],
-          tally: {}
-        }
-      };
+      state.entries = ['Germany', 'Spain', 'England'];
       const nextState = next(state);
 
       expect(nextState).to.deep.equal({
@@ -45,17 +54,14 @@ describe('application logic', () => {
         entries: ['England']
       });
     });
+
+    it('puts winner of current vote back to entries', () => {
+    });
   });
 
   describe('vote', () => {
     it('creates a tally for the voted entry', () => {
-      const state = {
-        vote: {
-          pair: ['Germany', 'Spain'],
-          tally: {}
-        },
-        entries: []
-      };
+      state.vote.pair = ['Germany', 'Spain'];
       const nextState = vote(state, 'Germany');
 
       expect(nextState).to.deep.equal({
@@ -70,15 +76,12 @@ describe('application logic', () => {
     });
 
     it('adds to exsting tally for the voted entry', () => {
-      const state = {
-        vote: {
-          pair: ['Germany', 'Spain'],
-          tally: {
-            'Germany': 3,
-            'Spain': 2
-          }
-        },
-        entries: []
+      state.vote = {
+        pair: ['Germany', 'Spain'],
+        tally: {
+          'Germany': 3,
+          'Spain': 2
+        }
       };
       const nextState = vote(state, 'Germany');
 
