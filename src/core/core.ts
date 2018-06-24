@@ -60,19 +60,16 @@ export function next(state: EntriesState): {} {
   };
 }
 
-export function vote(state: EntriesState, entry: string): {} {
-  const entryTally = state.vote.tally[entry] 
-    ? state.vote.tally[entry] + 1 
+export function vote(voteState: EntriesState['vote'], entry: string): {} {
+  const entryTally = voteState.tally[entry] 
+    ? voteState.tally[entry] + 1 
     : 1;
 
   return {
-    ...state,
-    vote: {
-      ...state.vote,
-      tally: {
-        ...state.vote.tally,
-        [entry]: entryTally
-      }
+    ...voteState,
+    tally: {
+      ...voteState.tally,
+      [entry]: entryTally
     }
   };
 }

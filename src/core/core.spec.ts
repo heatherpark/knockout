@@ -5,14 +5,14 @@ import { EntriesState, INITIAL_ENTRIES_STATE, next, setEntries, vote } from './c
 
 describe('application logic', () => {
   let state;
-  let expectedState: EntriesState; 
+  let expectedState: EntriesState;
 
   beforeEach(() => {
-    state = {...INITIAL_ENTRIES_STATE};
+    state = { ...INITIAL_ENTRIES_STATE };
   });
 
   afterEach(() => {
-    state = {...INITIAL_ENTRIES_STATE};
+    state = { ...INITIAL_ENTRIES_STATE };
   });
 
   describe('setEntries', () => {
@@ -65,7 +65,7 @@ describe('application logic', () => {
 
       const nextState = next(state);
 
-      expect(nextState).to.deep.equal(expectedState); 
+      expect(nextState).to.deep.equal(expectedState);
     });
 
     it('puts both from tied vote back to entries', () => {
@@ -98,7 +98,7 @@ describe('application logic', () => {
           'Spain': 2
         }
       };
-      expectedState = { 
+      expectedState = {
         ...INITIAL_ENTRIES_STATE,
         winner: 'Germany'
       };
@@ -109,45 +109,50 @@ describe('application logic', () => {
   });
 
   describe('vote', () => {
+    let voteState;
+
+    beforeEach(() => {
+      voteState = { ...state.vote };
+    });
+
+    afterEach(() => {
+      voteState = { ...state.vote };
+    });
+
     it('creates a tally for the voted entry', () => {
-      state.vote.pair = ['Germany', 'Spain'];
-      expectedState = {
-        ...state,
-        vote: {
-          pair: ['Germany', 'Spain'],
-          tally: {
-            'Germany': 1
-          }
+      voteState.pair = ['Germany', 'Spain'];
+      const expectedVoteState = {
+        ...voteState,
+        tally: {
+          'Germany': 1
         }
       };
 
-      const nextState = vote(state, 'Germany');
+      const nextState = vote(voteState, 'Germany');
 
-      expect(nextState).to.deep.equal(expectedState);
+      expect(nextState).to.deep.equal(expectedVoteState);
     });
 
     it('adds to existing tally for the voted entry', () => {
-      state.vote = {
+      voteState = {
+        ...voteState,
         pair: ['Germany', 'Spain'],
         tally: {
           'Germany': 3,
           'Spain': 2
         }
       };
-      const expectedState = {
-        ...state,
-        vote: {
-          pair: ['Germany', 'Spain'],
-          tally: {
-            'Germany': 4,
-            'Spain': 2
-          }
+      const expectedVoteState = {
+        ...voteState,
+        tally: {
+          'Germany': 4,
+          'Spain': 2
         }
       };
 
-      const nextState = vote(state, 'Germany');
+      const nextState = vote(voteState, 'Germany');
 
-      expect(nextState).to.deep.equal(expectedState);
+      expect(nextState).to.deep.equal(expectedVoteState);
     });
   });
 });

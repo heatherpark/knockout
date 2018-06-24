@@ -7,7 +7,7 @@ export default function reducer(state = INITIAL_ENTRIES_STATE, action) {
     case 'NEXT':
       return next(state);
     case 'VOTE':
-      return vote(state, action.entry);
+      return vote(state.vote, action.entry);
     default:
       return state;
   }
