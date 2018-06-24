@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { EntriesState, INITIAL_ENTRIES_STATE, next, setEntries, vote } from './core';
 
 describe('application logic', () => {
-  let state;
+  let state: EntriesState;
   let expectedState: EntriesState;
 
   beforeEach(() => {
@@ -109,7 +109,7 @@ describe('application logic', () => {
   });
 
   describe('vote', () => {
-    let voteState;
+    let voteState: EntriesState['vote'];
 
     beforeEach(() => {
       voteState = { ...state.vote };
