@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*.test.ts",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch-extensions ts --watch -R min"
   },
   "keywords": [],
   "author": "",
