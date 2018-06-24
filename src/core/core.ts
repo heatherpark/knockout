@@ -1,3 +1,11 @@
+export const initialEntriesState: EntriesState = {
+  entries: [],
+  vote: {
+    pair: [],
+    tally: {}
+  }
+};
+
 interface EntriesState {
   entries: string[];
   vote: {
@@ -24,7 +32,7 @@ function getWinners(vote: EntriesState['vote']): string[] {
 
   if (aVotes > bVotes) return [a];
   if (aVotes < bVotes) return [b];
-  
+
   return [a, b];
 }
 
@@ -34,10 +42,17 @@ export function next(state: EntriesState): {} {
     ...getWinners(state.vote)
   ];
 
+  if (entries.length === 1) {
+    return {
+      ...initialEntriesState,
+      winner: entries[0]
+    };
+  }
+
   return {
     ...state,
     vote: {
-      ...state.vote,
+      tally: {},
       pair: [entries[0], entries[1]],
     },
     entries: [...entries.slice(2)]
