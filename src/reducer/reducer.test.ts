@@ -16,6 +16,21 @@ describe('core logic reducer', () => {
     initialState = {...initialEntriesState};
   });
 
+  it('has an initial state', () => {
+    const action = {
+      type: 'SET_ENTRIES', 
+      entries: ['Germany']
+    };
+    expectedState = {
+      ...initialState,
+      entries: ['Germany']
+    };
+    
+    const nextState = reducer(undefined, action);
+
+    expect(nextState).to.deep.equal(expectedState);
+  });
+
   it('handles SET_ENTRIES', () => {
     const action = { 
       type: 'SET_ENTRIES', 
