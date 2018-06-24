@@ -1,3 +1,3 @@
 export default function startServer() {
-  const io = require('socket.io').attach(8090);
+  const io = require('socket.io')(8090);
 }
