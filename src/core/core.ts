@@ -1,12 +1,4 @@
-export const INITIAL_ENTRIES_STATE: EntriesState = {
-  entries: [],
-  vote: {
-    pair: [],
-    tally: {}
-  }
-};
-
-export interface EntriesState {
+export type EntriesState = {
   entries: string[];
   vote: {
     pair: string[];
@@ -15,7 +7,15 @@ export interface EntriesState {
     }
   }
   winner?: string;
-}
+};
+
+export const INITIAL_ENTRIES_STATE: EntriesState = {
+  entries: [],
+  vote: {
+    pair: [],
+    tally: {}
+  }
+};
 
 export function setEntries(state: EntriesState, entries: string[]): {} {
   return {
