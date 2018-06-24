@@ -15,8 +15,24 @@ export function setEntries(state: EntriesState, entries: string[]): {} {
   };
 }
 
+function getWinners(vote: EntriesState['vote']): string[] {
+  if (!vote.pair.length) return [];
+
+  const [a, b] = vote.pair;
+  const aVotes: number = vote.tally[a] ? vote.tally[a] : 0;
+  const bVotes: number = vote.tally[b] ? vote.tally[b] : 0;
+
+  if (aVotes > bVotes) return [a];
+  if (aVotes < bVotes) return [b];
+  
+  return [a, b];
+}
+
 export function next(state: EntriesState): {} {
-  const entries: string[] = state.entries;
+  const entries: string[] = [
+    ...state.entries,
+    ...getWinners(state.vote)
+  ];
 
   return {
     ...state,
