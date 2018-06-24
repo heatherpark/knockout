@@ -29,6 +29,7 @@ describe('application logic', () => {
   describe('setEntries', () => {
     it('adds the entries to the state', () => {
       const entries = ['Germany', 'Spain'];
+      state.entries = entries;
       const nextState = setEntries(state, entries);
 
       expect(nextState).to.deep.equal({
@@ -56,6 +57,49 @@ describe('application logic', () => {
     });
 
     it('puts winner of current vote back to entries', () => {
+      state.vote = {
+        pair: ['Germany', 'Spain'],
+        tally: {
+          'Germany': 4,
+          'Spain': 2
+        }
+      };
+      state.entries = ['England', 'Russia', 'Japan'];
+      const nextState = next(state);
+
+      expect(nextState).to.deep.equal({
+        vote: {
+          pair: ['England', 'Russia'],
+          tally: {
+            'Germany': 4,
+            'Spain': 2
+          }
+        },
+        entries: ['Japan', 'Germany']
+      }); 
+    });
+
+    it('puts both from tied vote back to entries', () => {
+      state.vote = {
+        pair: ['Germany', 'Spain'],
+        tally: {
+          'Germany': 3,
+          'Spain': 3
+        }
+      };
+      state.entries = ['Russia', 'Japan', 'Egypt'];
+      const nextState = next(state);
+
+      expect(nextState).to.deep.equal({
+        vote: {
+          pair: ['Russia', 'Japan'],
+          tally: {
+            'Germany': 3,
+            'Spain': 3
+          }
+        },
+        entries: ['Egypt', 'Germany', 'Spain']
+      });
     });
   });
 
@@ -75,7 +119,7 @@ describe('application logic', () => {
       });
     });
 
-    it('adds to exsting tally for the voted entry', () => {
+    it('adds to existing tally for the voted entry', () => {
       state.vote = {
         pair: ['Germany', 'Spain'],
         tally: {
