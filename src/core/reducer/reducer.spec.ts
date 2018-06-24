@@ -2,18 +2,18 @@ import {expect} from 'chai';
 import 'mocha';
 
 import reducer from './reducer';
-import { EntriesState, initialEntriesState } from '../core/core';
+import { EntriesState, INITIAL_ENTRIES_STATE } from '../core';
 
 describe('core logic reducer', () => {
   let initialState: EntriesState;
   let expectedState: EntriesState;
 
   beforeEach(() => {
-    initialState = {...initialEntriesState};
+    initialState = {...INITIAL_ENTRIES_STATE};
   });
 
   afterEach(() => {
-    initialState = {...initialEntriesState};
+    initialState = {...INITIAL_ENTRIES_STATE};
   });
 
   it('has an initial state', () => {

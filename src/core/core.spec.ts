@@ -1,18 +1,18 @@
 import 'mocha';
 import { expect } from 'chai';
 
-import { EntriesState, initialEntriesState, next, setEntries, vote } from './core';
+import { EntriesState, INITIAL_ENTRIES_STATE, next, setEntries, vote } from './core';
 
 describe('application logic', () => {
   let state;
   let expectedState: EntriesState; 
 
   beforeEach(() => {
-    state = {...initialEntriesState};
+    state = {...INITIAL_ENTRIES_STATE};
   });
 
   afterEach(() => {
-    state = {...initialEntriesState};
+    state = {...INITIAL_ENTRIES_STATE};
   });
 
   describe('setEntries', () => {
@@ -99,7 +99,7 @@ describe('application logic', () => {
         }
       };
       expectedState = { 
-        ...initialEntriesState,
+        ...INITIAL_ENTRIES_STATE,
         winner: 'Germany'
       };
       const nextState = next(state);

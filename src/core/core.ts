@@ -1,4 +1,4 @@
-export const initialEntriesState: EntriesState = {
+export const INITIAL_ENTRIES_STATE: EntriesState = {
   entries: [],
   vote: {
     pair: [],
@@ -45,7 +45,7 @@ export function next(state: EntriesState): {} {
   
   if (entries.length === 1) {
     return {
-      ...initialEntriesState,
+      ...INITIAL_ENTRIES_STATE,
       winner: entries[0]
     };
   }

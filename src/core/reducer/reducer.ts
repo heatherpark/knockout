@@ -1,6 +1,6 @@
-import { initialEntriesState, setEntries, next, vote } from '../core/core';
+import { INITIAL_ENTRIES_STATE, setEntries, next, vote } from '../core';
 
-export default function reducer(state = initialEntriesState, action) {
+export default function reducer(state = INITIAL_ENTRIES_STATE, action) {
   switch (action.type) {
     case 'SET_ENTRIES':
       return setEntries(state, action.entries);
