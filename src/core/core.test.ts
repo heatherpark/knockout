@@ -39,7 +39,8 @@ describe('application logic', () => {
 
       expect(nextState).to.deep.equal({
         vote: {
-          pair: ['Germany', 'Spain']
+          pair: ['Germany', 'Spain'],
+          tally: {}
         },
         entries: ['England']
       });

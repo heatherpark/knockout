@@ -12,7 +12,7 @@ export function setEntries(state: EntriesState, entries: string[]): {} {
   return {
     ...state,
     entries
-  }
+  };
 }
 
 export function next(state: EntriesState): {} {
@@ -21,7 +21,8 @@ export function next(state: EntriesState): {} {
   return {
     ...state,
     vote: {
-      pair: [entries[0], entries[1]]
+      ...state.vote,
+      pair: [entries[0], entries[1]],
     },
     entries: [...entries.slice(2)]
   };
