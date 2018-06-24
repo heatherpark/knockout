@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
+    "start": "babel-node ./build/index.js",
     "tsc": "tsc",
     "tsc:watch": "npm run tsc -- --watch",
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
