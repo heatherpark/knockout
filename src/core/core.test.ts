@@ -7,23 +7,11 @@ describe('application logic', () => {
   let state;
 
   beforeEach(() => {
-    state = {
-      entries: [],
-      vote: {
-        pair: [],
-        tally: {}
-      }
-    };
+    state = initialEntriesState;
   });
 
   afterEach(() => {
-    state = {
-      entries: [],
-      vote: {
-        pair: [],
-        tally: {}
-      }
-    };
+    state = initialEntriesState;
   });
 
   describe('setEntries', () => {
