@@ -1,7 +1,7 @@
 import 'mocha';
 import { expect } from 'chai';
 
-import { next, setEntries, vote } from './core';
+import { initialEntriesState, next, setEntries, vote } from './core';
 
 describe('application logic', () => {
   let state;
@@ -70,10 +70,7 @@ describe('application logic', () => {
       expect(nextState).to.deep.equal({
         vote: {
           pair: ['England', 'Russia'],
-          tally: {
-            'Germany': 4,
-            'Spain': 2
-          }
+          tally: {}
         },
         entries: ['Japan', 'Germany']
       }); 
@@ -93,12 +90,25 @@ describe('application logic', () => {
       expect(nextState).to.deep.equal({
         vote: {
           pair: ['Russia', 'Japan'],
-          tally: {
-            'Germany': 3,
-            'Spain': 3
-          }
+          tally: {}
         },
         entries: ['Egypt', 'Germany', 'Spain']
+      });
+    });
+
+    it('marks winner when just one entry left', () => {
+      state.vote = {
+        pair: ['Germany', 'Spain'],
+        tally: {
+          'Germany': 4,
+          'Spain': 2
+        }
+      };
+      const nextState = next(state);
+
+      expect(nextState).to.deep.equal({
+        ...initialEntriesState,
+        winner: 'Germany'
       });
     });
   });
