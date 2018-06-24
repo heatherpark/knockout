@@ -6,7 +6,7 @@ export const initialEntriesState: EntriesState = {
   }
 };
 
-interface EntriesState {
+export interface EntriesState {
   entries: string[];
   vote: {
     pair: string[];
@@ -14,6 +14,7 @@ interface EntriesState {
       [key: string]: number;
     }
   }
+  winner?: string;
 }
 
 export function setEntries(state: EntriesState, entries: string[]): {} {
@@ -41,7 +42,7 @@ export function next(state: EntriesState): {} {
     ...state.entries,
     ...getWinners(state.vote)
   ];
-
+  
   if (entries.length === 1) {
     return {
       ...initialEntriesState,
