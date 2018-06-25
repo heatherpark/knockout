@@ -54,4 +54,15 @@ describe('Vote', () => {
     const disabledButtons = shallowRender(props).find('[disabled]');
     expect(disabledButtons.length).toBe(2);
   });
+
+  it('adds label to the voted entry', () => {
+    props = {
+      pair: ['Germany', 'Spain'],
+      vote: () => {},
+      hasVoted: 'Germany'
+    };
+
+    const button = shallowRender(props).find('.label').first();
+    expect(button.render().text()).toBe('Voted');
+  });
 });
