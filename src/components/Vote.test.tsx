@@ -43,4 +43,15 @@ describe('Vote', () => {
     
     expect(mockCallback.mock.calls.length).toBe(1);
   });
+
+  it('disables buttons when user has voted', () => {
+    props = {
+      pair: ['Germany', 'Spain'],
+      vote: () => {},
+      hasVoted: 'Germany'
+    };
+
+    const disabledButtons = shallowRender(props).find('[disabled]');
+    expect(disabledButtons.length).toBe(2);
+  });
 });
