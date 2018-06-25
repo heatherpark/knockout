@@ -8,7 +8,10 @@ import './index.css';
 const pair = ['Trainspotting', '28 Days later'];
 
 ReactDOM.render(
-  <Voting pair={pair} />,
+  <Voting 
+    hasVoted="Trainspotting"
+    pair={pair} 
+    vote={() => {}} />,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
