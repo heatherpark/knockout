@@ -3,15 +3,15 @@ import * as Enzyme from 'enzyme';
 import { shallow } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 
-import Voting, { IProps } from './Voting';
+import Vote, { IProps } from './Vote';
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe('Voting', () => {
+describe('Vote', () => {
   let props: IProps | undefined;
 
   const shallowRender = props => 
-    shallow(<Voting {...props} />);
+    shallow(<Vote {...props} />);
 
   afterEach(() => {
     props = undefined;
@@ -20,7 +20,8 @@ describe('Voting', () => {
   it('renders a pair of buttons', () => {
     props = { 
       pair: ['Germany', 'Spain'],
-      vote: () => {} 
+      vote: () => {},
+      hasVoted: '' 
     };
     const buttons = shallowRender(props).find('button');
 
@@ -33,7 +34,8 @@ describe('Voting', () => {
     const mockCallback = jest.fn();
     props = { 
       pair: ['Germany', 'Spain'],
-      vote: mockCallback 
+      vote: mockCallback,
+      hasVoted: '' 
     };
     
     const button = shallowRender(props).find('button').first();
