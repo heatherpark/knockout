@@ -51,7 +51,7 @@ describe('Vote', () => {
       hasVoted: 'Germany'
     };
 
-    const disabledButtons = shallowRender(props).find('[disabled]');
+    const disabledButtons = shallowRender(props).find('[disabled=true]');
     expect(disabledButtons.length).toBe(2);
   });
 
