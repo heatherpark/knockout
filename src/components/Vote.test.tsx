@@ -5,7 +5,7 @@ import * as Adapter from 'enzyme-adapter-react-16';
 
 import Vote, { IProps } from './Vote';
 
-Enzyme.configure({ adapter: new Adapter() })
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Vote', () => {
   let props: IProps | undefined;
