@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-interface IWinnerProps {
+interface IProps {
   winner: string;
 };
 
-const Winner: React.SFC<IWinnerProps> = (props: IWinnerProps) => {
+const Winner: React.SFC<IProps> = (props: IProps) => {
   return (
     <div className="winner">
       The winner is {props.winner}!
