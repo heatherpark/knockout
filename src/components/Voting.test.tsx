@@ -19,6 +19,10 @@ describe('Voting', () => {
 
   it('renders a pair of buttons', () => {
     props = { pair: ['Germany', 'Spain'] };
-    expect(shallowRender(props).find('button').length).toBe(2);
+    const buttons = shallowRender(props).find('button');
+
+    expect(buttons.length).toBe(2);
+    expect(buttons.at(0).render().text()).toBe(props.pair[0]);
+    expect(buttons.at(1).render().text()).toBe(props.pair[1]);
   });
 });
