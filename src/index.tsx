@@ -8,8 +8,8 @@ import './index.css';
 const pair = ['Trainspotting', '28 Days later'];
 
 ReactDOM.render(
-  <Voting 
-    winner="Trainspotting"
+  <Voting
+    winner="Trainspotting" 
     hasVoted="Trainspotting"
     pair={pair} 
     vote={() => {}} />,
