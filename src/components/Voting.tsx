@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Vote from './Vote';
 import Winner from './Winner';
+import * as actions from '../store/actions/actions';
 
 interface IProps {
   winner: string;
@@ -29,4 +30,8 @@ const mapStateToProps = state => ({
   winner: state.winner
 });
 
-export default connect(mapStateToProps)(Voting);
+const mapDispatchToProps = dispatch => ({
+  vote: (entry) => dispatch(actions.vote(entry))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Voting);
