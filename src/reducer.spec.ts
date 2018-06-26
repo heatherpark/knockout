@@ -1,12 +1,12 @@
-import {expect} from 'chai';
+import { expect } from 'chai';
 import 'mocha';
 
 import reducer from './reducer';
-import { EntriesState, INITIAL_ENTRIES_STATE } from './core/core';
+import { INITIAL_ENTRIES_STATE } from './core/core';
 
 describe('core logic reducer', () => {
-  let initialState: EntriesState;
-  let expectedState: EntriesState;
+  let initialState;
+  let expectedState;
 
   beforeEach(() => {
     initialState = {...INITIAL_ENTRIES_STATE};
@@ -68,5 +68,4 @@ describe('core logic reducer', () => {
 
     expect(nextState).to.deep.equal(expectedState);
   });
-
 });
