@@ -1,7 +1,7 @@
 function vote(state, entry) {
   const currentPair = state.vote.pair;
-
-  if (currentPair && currentPair[entry]) {
+  
+  if (currentPair && currentPair.includes(entry)) {
     return {
       ...state,
       hasVoted: entry
