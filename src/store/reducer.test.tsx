@@ -42,11 +42,36 @@ describe('reducer', () => {
     })
   });
 
+  it('removes hasVoted on SET_STATE if pair changes', () => {
+    const initialState = {
+      hasVoted: 'Germany',
+      vote: {
+        pair: ['Germany', 'Spain'],
+        tally: { 'Germany': 1 }
+      }
+    };
+    const action = {
+      state: {
+        vote: {
+          pair: ['Russia', 'Mexico']
+        }
+      },
+      type: 'SET_STATE'
+    };
+    const nextState = reducer(initialState, action);
+
+    expect(nextState).toEqual({
+      vote: {
+        pair: ['Russia', 'Mexico']
+      }
+    })
+  });
+
   it('handles VOTE by setting hasVoted', () => {
     const state = {
       vote: {
         pair: ['Germany', 'Spain'],
-        tally: { 'Germany': 1 }
+        tally: { Germany: 1 }
       }
     };
     const action = {
@@ -59,7 +84,7 @@ describe('reducer', () => {
       hasVoted: 'Germany',
       vote: {
         pair: ['Germany', 'Spain'],
-        tally: { 'Germany': 1 }
+        tally: { Germany: 1 }
       }
     });
   });
@@ -78,7 +103,6 @@ describe('reducer', () => {
     const nextState = reducer(state, action);
 
     expect(nextState).toEqual({
-      hasVoted: 'Germany',
       vote: {
         pair: ['Germany', 'Spain'],
         tally: { 'Germany': 1 }
