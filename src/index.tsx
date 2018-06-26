@@ -7,6 +7,7 @@ import { devToolsEnhancer } from 'redux-devtools-extension';
 import * as io from 'socket.io-client';
 import registerServiceWorker from './registerServiceWorker';
 
+import { setState } from './store/actions/actions';
 import reducer from './store/reducer';
 
 import App from './App';
@@ -18,10 +19,7 @@ const store = createStore(
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 socket.on('state', state => {
-  store.dispatch({
-    state,
-    type: 'SET_STATE'
-  });
+  store.dispatch(setState(state))
 });
 
 ReactDOM.render(
