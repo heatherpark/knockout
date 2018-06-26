@@ -17,16 +17,9 @@ const store = createStore(
 );
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
-socket.on('connect', () => {
-  // tslint:disable-next-line:no-console
-  console.log('connected');
+socket.on('state', state => {
   store.dispatch({
-    state: {
-      vote: {
-        pair: ['Germany', 'Spain'],
-        tally: { 'Germany': 2 }
-      }
-    },
+    state,
     type: 'SET_STATE'
   });
 });
