@@ -10,4 +10,4 @@ export default [
   "127 Hours",
   "Trance",
   "Steve Jobs"
-]
+];
