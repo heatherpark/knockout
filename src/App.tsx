@@ -1,14 +1,17 @@
 import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
+import Results from './components/Results';
 import Voting from './components/Voting';
 
 const App = () => {
   return (
     <Switch>
-      <Route to="/" component={Voting} />
+      <Route path="/results" component={Results} />
+      <Route path="/" component={Voting} />
+      <Redirect to="/" />
     </Switch>
   );
 };
 
-export default App;
+export default withRouter(App);
