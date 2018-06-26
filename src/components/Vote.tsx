@@ -21,7 +21,7 @@ const Vote: React.SFC<IProps> = (props: IProps) => {
         <button
           disabled={isDisabled()}
           key={entry}
-          onClick={() => props.vote(entry)}>
+          onClick={props.vote.bind(this, entry)}>
           <h1>{entry}</h1>
           {hasVotedFor(entry)
             ? <div className="label">Voted</div>
