@@ -7,17 +7,17 @@ export interface IProps {
 }
 
 const Vote: React.SFC<IProps> = (props: IProps) => {
-  function isDisabled() {
-    return !!props.hasVoted;
-  }
+  // function isDisabled() {
+  //   return !!props.hasVoted;
+  // }
 
-  function hasVotedFor(entry) {
-    return props.hasVoted === entry;
-  }
+  // function hasVotedFor(entry) {
+  //   return props.hasVoted === entry;
+  // }
 
   return (
     <div className="voting">
-      {props.pair.map(entry =>
+      {/* {props.pair.map(entry =>
         <button
           disabled={isDisabled()}
           key={entry}
@@ -27,7 +27,8 @@ const Vote: React.SFC<IProps> = (props: IProps) => {
             ? <div className="label">Voted</div>
             : null}
         </button>
-      )}
+      )} */}
+      Hey from votes
     </div>
   );
 };
