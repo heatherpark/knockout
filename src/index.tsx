@@ -1,18 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
-import Voting from './components/Voting';
-import './index.css';
-
-const pair = ['Trainspotting', '28 Days later'];
+import App from './App';
 
 ReactDOM.render(
-  <Voting
-    winner="Trainspotting" 
-    hasVoted="Trainspotting"
-    pair={pair} 
-    vote={() => {}} />,
-  document.getElementById('root') as HTMLElement
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
 );
 registerServiceWorker();
