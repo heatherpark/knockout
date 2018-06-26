@@ -7,5 +7,6 @@ export const setState = state => ({
 
 export const vote = entry => ({
   entry,
+  meta: { remote: true },
   type: actionTypes.VOTE
 });
