@@ -4,7 +4,7 @@ import * as Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 
 import Vote from './Vote';
-import Voting from './Voting';
+import { Voting } from './Voting';
 import Winner from './Winner';
 
 Enzyme.configure({ adapter: new Adapter() });
