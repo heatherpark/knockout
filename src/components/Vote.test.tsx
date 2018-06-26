@@ -1,7 +1,7 @@
-import * as React from 'react';
 import * as Enzyme from 'enzyme';
 import { shallow } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
+import * as React from 'react';
 
 import Vote, { IProps } from './Vote';
 
@@ -10,18 +10,18 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Vote', () => {
   let props: IProps | undefined;
 
-  const shallowRender = props => 
-    shallow(<Vote {...props} />);
+  const shallowRender = shallowRenderProps => 
+    shallow(<Vote {...shallowRenderProps} />);
 
   afterEach(() => {
     props = undefined;
-  });
+  }); 
 
   it('renders a pair of buttons', () => {
     props = { 
+      hasVoted: '', 
       pair: ['Germany', 'Spain'],
-      vote: () => {},
-      hasVoted: '' 
+      vote: jest.fn()
     };
     const buttons = shallowRender(props).find('button');
 
@@ -33,9 +33,9 @@ describe('Vote', () => {
   it('invokes callback when a button is clicked', () => {
     const mockCallback = jest.fn();
     props = { 
+      hasVoted: '', 
       pair: ['Germany', 'Spain'],
-      vote: mockCallback,
-      hasVoted: '' 
+      vote: mockCallback
     };
     
     const button = shallowRender(props).find('button').first();
@@ -46,9 +46,9 @@ describe('Vote', () => {
 
   it('disables buttons when user has voted', () => {
     props = {
+      hasVoted: 'Germany',
       pair: ['Germany', 'Spain'],
-      vote: () => {},
-      hasVoted: 'Germany'
+      vote: jest.fn()
     };
 
     const disabledButtons = shallowRender(props).find('[disabled=true]');
@@ -57,9 +57,9 @@ describe('Vote', () => {
 
   it('adds label to the voted entry', () => {
     props = {
+      hasVoted: 'Germany',
       pair: ['Germany', 'Spain'],
-      vote: () => {},
-      hasVoted: 'Germany'
+      vote: jest.fn()
     };
 
     const button = shallowRender(props).find('.label').first();

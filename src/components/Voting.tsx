@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Winner from './Winner';
 import Vote from './Vote';
+import Winner from './Winner';
 
 interface IProps {
   winner: string;
@@ -10,7 +10,7 @@ interface IProps {
 }
 
 class Voting extends React.Component<IProps> {
-  render() {
+  public render() {
     return (
       <div>
       {this.props.winner
