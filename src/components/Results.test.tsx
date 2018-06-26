@@ -6,21 +6,45 @@ import * as React from 'react';
 import Results from './Results';
 
 Enzyme.configure({ adapter: new Adapter() });
-
+  
 describe('Results', () => {
+  let props;
+
+  const shallowRender = shallowRenderProps => 
+    shallow(<Results {...shallowRenderProps} />);
+
+  afterEach(() => {
+    props = undefined;
+  }); 
+
   it('renders entries with vote counts or zero', () => {
-    const pair = ['Germany', 'Spain'];
-    const tally = { 'Germany': 5 };
-    const component = shallow(<Results pair={pair} tally={tally} />);
-    
-    const entries = component.find('.entry h1');
-    const tallies = component.find('.vote-count');
+    props = {
+      pair: ['Germany', 'Spain'],
+      tally: { 'Germany': 5 }
+    };
+    const resultsComponent = shallowRender(props);
+    const entries = resultsComponent.find('.entry h1');
+    const tallies = resultsComponent.find('.vote-count');
 
     expect(entries).toHaveLength(2);
-    expect(entries.at(0).render().text()).toBe(pair[0]);
-    expect(entries.at(1).render().text()).toBe(pair[1]);
+    expect(entries.at(0).render().text()).toBe(props.pair[0]);
+    expect(entries.at(1).render().text()).toBe(props.pair[1]);
     expect(tallies.at(0).render().text()).toBe('5');
     expect(tallies.at(1).render().text()).toBe('0');
+  });
+
+  it('invokes the next callback when next button is clicked', () => {
+    const mockCallback = jest.fn();
+    props = {
+      pair: ['Germany', 'Spain'],
+      next: mockCallback,
+      tally: {},
+    };
+    const button = shallowRender(props).find('.next').first();
+
+    button.simulate('click');
+    
+    expect(mockCallback.mock.calls.length).toBe(1);
   });
 });
 
