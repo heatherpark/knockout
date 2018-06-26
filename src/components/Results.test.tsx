@@ -4,6 +4,7 @@ import * as Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 
 import Results from './Results';
+import Winner from './Winner';
 
 Enzyme.configure({ adapter: new Adapter() });
   
@@ -45,6 +46,18 @@ describe('Results', () => {
     button.simulate('click');
     
     expect(mockCallback.mock.calls.length).toBe(1);
+  });
+
+  it('renders the winner when there is one', () => {
+    props = {
+      pair: ['Germany', 'Spain'],
+      next: jest.fn(),
+      tally: {},
+      winner: 'Germany'
+    };
+    const winnerComponents = shallowRender(props).find(Winner);
+
+    expect(winnerComponents.length).toBe(1);
   });
 });
 
