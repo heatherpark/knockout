@@ -7,7 +7,7 @@
     "start": "babel-node ./build/index.js",
     "tsc": "tsc",
     "tsc:watch": "npm run tsc -- --watch",
-    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "test": "mocha -r ts-node/register 'src/**/*.spec.ts'",
     "test:watch": "npm run test -- --watch-extensions ts --watch -R min"
   },
   "keywords": [],
