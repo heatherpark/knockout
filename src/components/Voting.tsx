@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+
 import Vote from './Vote';
 import Winner from './Winner';
 
@@ -21,4 +23,9 @@ class Voting extends React.Component<IProps> {
   }
 }
 
-export default Voting;
+const mapStateToProps = state => ({
+  pair: state.vote.pair,
+  winner: state.winner
+});
+
+export default connect(mapStateToProps)(Voting);
