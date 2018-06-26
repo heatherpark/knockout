@@ -11,7 +11,7 @@ interface IProps {
   vote: () => void;
 }
 
-class Voting extends React.Component<IProps> {
+export class Voting extends React.Component<IProps> {
   public render() {
     return (
       <div>
