@@ -41,4 +41,48 @@ describe('reducer', () => {
       }
     })
   });
+
+  it('handles VOTE by setting hasVoted', () => {
+    const state = {
+      vote: {
+        pair: ['Germany', 'Spain'],
+        tally: { 'Germany': 1 }
+      }
+    };
+    const action = {
+      entry: 'Germany',
+      type: 'VOTE'
+    };
+    const nextState = reducer(state, action);
+
+    expect(nextState).toEqual({
+      hasVoted: 'Germany',
+      vote: {
+        pair: ['Germany', 'Spain'],
+        tally: { 'Germany': 1 }
+      }
+    });
+  });
+
+  it('does not set hasVoted for VOTE on invalid entry', () => {
+    const state = {
+      vote: {
+        pair: ['Germany', 'Spain'],
+        tally: { 'Germany': 1 }
+      }
+    };
+    const action = {
+      entry: 'Russia',
+      type: 'VOTE'
+    };
+    const nextState = reducer(state, action);
+
+    expect(nextState).toEqual({
+      hasVoted: 'Germany',
+      vote: {
+        pair: ['Germany', 'Spain'],
+        tally: { 'Germany': 1 }
+      }
+    });
+  });
 });
