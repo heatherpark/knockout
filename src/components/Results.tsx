@@ -3,7 +3,7 @@ import * as React from 'react';
 interface IProps {
   pair: string[],
   tally: {
-    [key: string]: string
+    [key: string]: number
   }
 }
 
@@ -15,7 +15,7 @@ const Results: React.SFC<IProps> = (props: IProps) => {
           key={entry}
           className="entry">
           <h1>{entry}</h1>
-          <div className="voteCount">
+          <div className="vote-count">
             {props.tally[entry] ? props.tally[entry] : 0}
           </div>
         </div>)}
