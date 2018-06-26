@@ -37,8 +37,8 @@ describe('Results', () => {
   it('invokes the next callback when next button is clicked', () => {
     const mockCallback = jest.fn();
     props = {
-      pair: ['Germany', 'Spain'],
       next: mockCallback,
+      pair: ['Germany', 'Spain'],
       tally: {},
     };
     const button = shallowRender(props).find('.next').first();
@@ -50,8 +50,8 @@ describe('Results', () => {
 
   it('renders the winner when there is one', () => {
     props = {
-      pair: ['Germany', 'Spain'],
       next: jest.fn(),
+      pair: ['Germany', 'Spain'],
       tally: {},
       winner: 'Germany'
     };

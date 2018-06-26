@@ -13,6 +13,16 @@ export interface IProps {
 }
 
 export class Results extends React.Component<IProps> {
+  public render() {
+    return (
+      <div>
+        {this.props.winner 
+          ? <Winner winner={this.props.winner} /> 
+          : this.renderResults()}
+      </div>
+    );
+  }
+
   private renderResults() {
     return (
       <React.Fragment>
@@ -36,16 +46,6 @@ export class Results extends React.Component<IProps> {
         </button>
         </div>
       </React.Fragment>
-    );
-  }
-  
-  public render() {
-    return (
-      <div>
-        {this.props.winner 
-          ? <Winner winner={this.props.winner} /> 
-          : this.renderResults()}
-      </div>
     );
   }
 };
