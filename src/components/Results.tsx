@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
 import Winner from './Winner';
 
@@ -11,18 +12,18 @@ export interface IProps {
   winner?: string
 }
 
-const Results: React.SFC<IProps> = (props: IProps) => {
-  function renderResults() {
+export class Results extends React.Component<IProps> {
+  private renderResults() {
     return (
       <React.Fragment>
         <div className="results">
-          {props.pair.map(entry =>
+          {this.props.pair.map(entry =>
             <div
               key={entry}
               className="entry">
               <h1>{entry}</h1>
               <div className="vote-count">
-                {props.tally[entry] ? props.tally[entry] : 0}
+                {this.props.tally[entry] ? this.props.tally[entry] : 0}
               </div>
             </div>
           )}
@@ -30,20 +31,29 @@ const Results: React.SFC<IProps> = (props: IProps) => {
         <div className="management">
           <button
             className="next"
-            onClick={props.next}>
+            onClick={this.props.next}>
             Next
         </button>
         </div>
       </React.Fragment>
     );
   }
-  return (
-    <div>
-      {props.winner 
-        ? <Winner winner={props.winner} /> 
-        : renderResults()}
-    </div>
-  );
+  
+  public render() {
+    return (
+      <div>
+        {this.props.winner 
+          ? <Winner winner={this.props.winner} /> 
+          : this.renderResults()}
+      </div>
+    );
+  }
 };
 
-export default Results;
+const mapStateToProps = state => ({
+  pair: state.vote.pair,
+  tally: state.vote.tally,
+  winner: state.winner
+});
+
+export default connect(mapStateToProps)(Results);
