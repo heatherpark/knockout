@@ -13,11 +13,12 @@ import remoteActionMiddleware from './store/remote-action-middleware';
 
 import App from './App';
 
+const socket = io(`${location.protocol}//${location.hostname}:8090`);
+
 const store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(remoteActionMiddleware)
+  applyMiddleware(remoteActionMiddleware(socket))
 ));
 
-const socket = io(`${location.protocol}//${location.hostname}:8090`);
 socket.on('state', state => {
   store.dispatch(setState(state))
 });
