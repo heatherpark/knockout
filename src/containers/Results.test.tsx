@@ -5,6 +5,7 @@ import * as React from 'react';
 
 import Winner from '../components/Winner';
 import { Results } from './Results';
+import { renderedText } from '../utility/testing';
 
 Enzyme.configure({ adapter: new Adapter() });
   
@@ -22,9 +23,6 @@ describe('Results', () => {
     const tallies = resultsComponent.find('.vote-count');
 
     expect(entries).toHaveLength(2);
-
-    const renderedText = (elements, index) => 
-      elements.at(index).render().text();
 
     expect(renderedText(entries, 0)).toBe(props.pair[0]);
     expect(renderedText(entries, 1)).toBe(props.pair[1]);
