@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
-import Results from './components/Results';
-import Voting from './components/Voting';
+import Results from './containers/Results';
+import Voting from './containers/Voting';
 
 const App = () => {
   return (
