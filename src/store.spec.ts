@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import 'mocha';
 
-import { INITIAL_STATE } from './core/core';
+import { INITIAL_STATE } from './core';
 import makeStore from './store';
 
 describe('store', () => {

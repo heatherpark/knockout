@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import 'mocha';
 
 import reducer from './reducer';
-import { INITIAL_STATE } from './core/core';
+import { INITIAL_STATE } from './core';
 
 describe('core logic reducer', () => {
   let state;

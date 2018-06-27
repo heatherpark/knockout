@@ -4,7 +4,7 @@ import {
   setEntries, 
   next, 
   vote 
-} from './core/core';
+} from './core';
 
 export default function reducer(
   state: EntriesState = INITIAL_STATE, 
