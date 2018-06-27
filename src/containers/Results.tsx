@@ -17,13 +17,13 @@ export class Results extends React.Component<IProps> {
   public render() {
     return (
       <div>
-        {this.props.winner 
-          ? <Winner winner={this.props.winner} /> 
+        {this.props.winner
+          ? <Winner winner={this.props.winner} />
           : this.renderResults()}
       </div>
     );
   }
-  
+
   private renderResults() {
     return (
       <React.Fragment>
@@ -34,7 +34,9 @@ export class Results extends React.Component<IProps> {
               className="entry">
               <h1>{entry}</h1>
               <div className="vote-count">
-                {this.props.tally && this.props.tally[entry] ? this.props.tally[entry] : 0}
+                {this.props.tally && this.props.tally[entry]
+                  ? this.props.tally[entry]
+                  : 0}
               </div>
             </div>
           )}
@@ -44,7 +46,7 @@ export class Results extends React.Component<IProps> {
             className="next"
             onClick={this.props.next}>
             Next
-        </button>
+          </button>
         </div>
       </React.Fragment>
     );
