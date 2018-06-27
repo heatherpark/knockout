@@ -5,15 +5,11 @@ import reducer from './reducer';
 import { INITIAL_STATE } from './core/core';
 
 describe('core logic reducer', () => {
-  let initialState;
+  let state;
   let expectedState;
 
   beforeEach(() => {
-    initialState = {...INITIAL_STATE};
-  });
-
-  afterEach(() => {
-    initialState = {...INITIAL_STATE};
+    state = {...INITIAL_STATE};
   });
 
   it('handles SET_ENTRIES', () => {
@@ -22,33 +18,32 @@ describe('core logic reducer', () => {
       entries: ['Germany']
     };
     expectedState = {
-      ...initialState,
+      ...state,
       entries: ['Germany']
     };
 
-    const nextState = reducer(initialState, action);
+    const nextState = reducer(state, action);
 
     expect(nextState).to.deep.equal(expectedState);
   });
 
   it('handles NEXT', () => {
-    initialState.entries = ['Germany', 'Spain'];
+    state.entries = ['Germany', 'Spain'];
     const action = { type: 'NEXT' };
     expectedState = {
-      ...initialState,
+      entries: [],
       vote: {
-        pair: ['Germany', 'Spain'],
-        tally: {}
+        pair: ['Germany', 'Spain']
       }
     };
 
-    const nextState = reducer(initialState, action);
+    const nextState = reducer(state, action);
 
     expect(nextState).to.deep.equal(expectedState);
   });
 
   it('handles VOTE', () => {
-    initialState.vote = {
+    state.vote = {
       pair: ['Germany', 'Spain'],
       tally: {}
     };
@@ -57,14 +52,14 @@ describe('core logic reducer', () => {
       entry: 'Germany'
     };
     expectedState = {
-      ...initialState,
+      ...state,
       vote: {
-        ...initialState.vote,
+        ...state.vote,
         tally: { 'Germany': 1 }
       }
     };
 
-    const nextState = reducer(initialState, action);
+    const nextState = reducer(state, action);
 
     expect(nextState).to.deep.equal(expectedState);
   });
