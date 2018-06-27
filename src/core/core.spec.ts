@@ -35,8 +35,7 @@ describe('application logic', () => {
       state.entries = ['Germany', 'Spain', 'England'];
       expectedState = {
         vote: {
-          pair: ['Germany', 'Spain'],
-          tally: {}
+          pair: ['Germany', 'Spain']
         },
         entries: ['England']
       };
@@ -57,8 +56,7 @@ describe('application logic', () => {
       state.entries = ['England', 'Russia', 'Japan'];
       expectedState = {
         vote: {
-          pair: ['England', 'Russia'],
-          tally: {}
+          pair: ['England', 'Russia']
         },
         entries: ['Japan', 'Germany']
       };
@@ -79,8 +77,7 @@ describe('application logic', () => {
       state.entries = ['Russia', 'Japan', 'Egypt'];
       expectedState = {
         vote: {
-          pair: ['Russia', 'Japan'],
-          tally: {}
+          pair: ['Russia', 'Japan']
         },
         entries: ['Egypt', 'Germany', 'Spain']
       };
