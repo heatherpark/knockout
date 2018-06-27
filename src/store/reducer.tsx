@@ -12,9 +12,9 @@ function vote(state, entry) {
 }
 
 function setState(currentState, newState) {
-  const newPair = newState.pair;
+  const newPair = newState.vote.pair;
 
-  if (newPair && newPair.includes(currentState.hasVoted)) {
+  if (newPair && !newPair.includes(currentState.hasVoted) || !newState.pair.tally) {
     const { hasVoted, ...remainingNewState } = newState;
 
     return {
