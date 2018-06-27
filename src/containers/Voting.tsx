@@ -16,10 +16,10 @@ export class Voting extends React.Component<IProps> {
   public render() {
     return (
       <div>
-      {this.props.winner
-        ? <Winner winner={this.props.winner} />
-        : <Vote {...this.props} />}
-    </div>
+        {this.props.winner
+          ? <Winner winner={this.props.winner} />
+          : <Vote {...this.props} />}
+      </div>
     );
   }
 }
