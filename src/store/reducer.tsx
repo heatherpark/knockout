@@ -11,23 +11,26 @@ function vote(state, entry) {
   }
 }
 
-function resetVote(currentState, nextState) {
-  const hasVoted = currentState.hasVoted;
-  const nextPair = nextState.vote && nextState.vote.pair;
-  
-  if (hasVoted && !nextPair.includes(hasVoted)) {
+function setState(currentState, newState) {
+  const newPair = newState.pair;
+
+  if (newPair && newPair.includes(currentState.hasVoted)) {
+    const { hasVoted, ...remainingNewState } = newState;
+
     return {
-      vote: nextState.vote
-    }
+      ...remainingNewState
+    };
   } else {
-    return nextState;
+    return {
+      ...newState
+    };
   }
 }
 
 const reducer = (state = {}, action) => {
   switch (action.type) {
     case 'SET_STATE':
-      return resetVote(state, action.state);
+      return setState(state, action.state);
     case 'VOTE':
       return vote(state, action.entry);
     default:
