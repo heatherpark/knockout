@@ -1,13 +1,13 @@
 import { 
   EntriesState, 
-  INITIAL_ENTRIES_STATE, 
+  INITIAL_STATE, 
   setEntries, 
   next, 
   vote 
 } from './core/core';
 
 export default function reducer(
-  state: EntriesState = INITIAL_ENTRIES_STATE, 
+  state: EntriesState = INITIAL_STATE, 
   action
 ): {} {
   switch (action.type) {
