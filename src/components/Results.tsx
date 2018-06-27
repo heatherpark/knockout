@@ -28,7 +28,7 @@ export class Results extends React.Component<IProps> {
     return (
       <React.Fragment>
         <div className="results">
-          {this.props.pair.map(entry =>
+          {this.props.pair && this.props.pair.map(entry =>
             <div
               key={entry}
               className="entry">
@@ -52,8 +52,8 @@ export class Results extends React.Component<IProps> {
 };
 
 const mapStateToProps = state => ({
-  pair: state.vote.pair,
-  tally: state.vote.tally,
+  pair: state.vote && state.vote.pair,
+  tally: state.vote && state.vote.tally,
   winner: state.winner
 });
 
