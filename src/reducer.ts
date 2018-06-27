@@ -16,7 +16,10 @@ export default function reducer(
     case 'NEXT':
       return next(state);
     case 'VOTE':
-      return vote(state.vote, action.entry);
+      return {
+        ...state,
+        vote: vote(state.vote, action.entry)
+      };
     default:
       return state;
   }
