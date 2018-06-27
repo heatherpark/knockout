@@ -9,17 +9,11 @@ import Winner from '../components/Winner';
 Enzyme.configure({ adapter: new Adapter() });
   
 describe('Results', () => {
-  let props;
-
   const shallowRender = shallowRenderProps => 
     shallow(<Results {...shallowRenderProps} />);
 
-  afterEach(() => {
-    props = undefined;
-  }); 
-
   it('renders entries with vote counts or zero', () => {
-    props = {
+    let props = {
       pair: ['Germany', 'Spain'],
       tally: { 'Germany': 5 }
     };
@@ -28,18 +22,22 @@ describe('Results', () => {
     const tallies = resultsComponent.find('.vote-count');
 
     expect(entries).toHaveLength(2);
-    expect(entries.at(0).render().text()).toBe(props.pair[0]);
-    expect(entries.at(1).render().text()).toBe(props.pair[1]);
-    expect(tallies.at(0).render().text()).toBe('5');
-    expect(tallies.at(1).render().text()).toBe('0');
+
+    const renderedText = (elements, index) => 
+      elements.at(index).render().text();
+
+    expect(renderedText(entries, 0)).toBe(props.pair[0]);
+    expect(renderedText(entries, 1)).toBe(props.pair[1]);
+
+    expect(renderedText(tallies, 0)).toBe('5');
+    expect(renderedText(tallies, 1)).toBe('0');
   });
 
   it('invokes the next callback when next button is clicked', () => {
     const mockCallback = jest.fn();
-    props = {
+    let props = {
       next: mockCallback,
-      pair: ['Germany', 'Spain'],
-      tally: {},
+      pair: ['Germany', 'Spain']
     };
     const button = shallowRender(props).find('.next').first();
 
@@ -49,7 +47,7 @@ describe('Results', () => {
   });
 
   it('renders the winner when there is one', () => {
-    props = {
+    let props = {
       next: jest.fn(),
       pair: ['Germany', 'Spain'],
       tally: {},
