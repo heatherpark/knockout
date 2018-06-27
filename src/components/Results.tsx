@@ -34,7 +34,7 @@ export class Results extends React.Component<IProps> {
               className="entry">
               <h1>{entry}</h1>
               <div className="vote-count">
-                {this.props.tally[entry] ? this.props.tally[entry] : 0}
+                {this.props.tally && this.props.tally[entry] ? this.props.tally[entry] : 0}
               </div>
             </div>
           )}
