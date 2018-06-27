@@ -22,6 +22,7 @@ function setState(currentState, newState) {
     };
   } else {
     return {
+      ...currentState,
       ...newState
     };
   }
