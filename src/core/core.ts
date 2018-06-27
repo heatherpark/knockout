@@ -52,8 +52,7 @@ export function next(state: EntriesState): {} {
   return {
     ...state,
     vote: {
-      tally: {},
-      pair: [entries[0], entries[1]],
+      pair: [entries[0], entries[1]]
     },
     entries: [...entries.slice(2)]
   };
