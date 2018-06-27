@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import * as actions from '../store/actions/actions';
 import Winner from './Winner';
 
 export interface IProps {
@@ -56,4 +57,8 @@ const mapStateToProps = state => ({
   winner: state.winner
 });
 
-export default connect(mapStateToProps)(Results);
+const mapDispatchToProps = dispatch => ({
+  next: () => dispatch(actions.next)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Results);
