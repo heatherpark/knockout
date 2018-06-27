@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../store/actions/actions';
 import Vote from '../components/Vote';
 import Winner from '../components/Winner';
+import * as actions from '../store/actions/actions';
 
 interface IProps {
   winner: string;

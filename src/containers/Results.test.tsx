@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 
-import { Results } from './Results';
 import Winner from '../components/Winner';
+import { Results } from './Results';
 
 Enzyme.configure({ adapter: new Adapter() });
   
@@ -13,7 +13,7 @@ describe('Results', () => {
     shallow(<Results {...shallowRenderProps} />);
 
   it('renders entries with vote counts or zero', () => {
-    let props = {
+    const props = {
       pair: ['Germany', 'Spain'],
       tally: { 'Germany': 5 }
     };
@@ -35,7 +35,7 @@ describe('Results', () => {
 
   it('invokes the next callback when next button is clicked', () => {
     const mockCallback = jest.fn();
-    let props = {
+    const props = {
       next: mockCallback,
       pair: ['Germany', 'Spain']
     };
@@ -47,7 +47,7 @@ describe('Results', () => {
   });
 
   it('renders the winner when there is one', () => {
-    let props = {
+    const props = {
       next: jest.fn(),
       pair: ['Germany', 'Spain'],
       tally: {},
