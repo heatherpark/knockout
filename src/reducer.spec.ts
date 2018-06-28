@@ -46,7 +46,6 @@ describe('core logic reducer', () => {
   it('handles VOTE', () => {
     state.vote = {
       pair: ['Germany', 'Spain'],
-      tally: {}
     };
     const action = {
       type: actionTypes.VOTE, 
