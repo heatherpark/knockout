@@ -4,8 +4,8 @@ import * as Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 
 import Winner from '../components/Winner';
-import { Results } from './Results';
 import { renderedText } from '../utility/testing';
+import { Results } from './Results';
 
 Enzyme.configure({ adapter: new Adapter() });
   
