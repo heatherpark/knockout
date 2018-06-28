@@ -2,12 +2,12 @@ import { expect } from 'chai';
 import 'mocha';
 
 import * as actionTypes from './actionTypes';
-import { INITIAL_STATE } from './core';
+import { EntriesState, INITIAL_STATE  } from './core';
 import reducer from './reducer';
 
 describe('core logic reducer', () => {
-  let state;
-  let expectedState;
+  let state: EntriesState;
+  let expectedState: EntriesState;
 
   beforeEach(() => {
     state = {...INITIAL_STATE};
