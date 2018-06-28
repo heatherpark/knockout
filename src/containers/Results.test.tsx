@@ -47,8 +47,6 @@ describe('Results', () => {
   it('renders the winner when there is one', () => {
     const props = {
       next: jest.fn(),
-      pair: ['Germany', 'Spain'],
-      tally: {},
       winner: 'Germany'
     };
     const winnerComponents = shallowRender(props).find(Winner);
