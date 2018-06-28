@@ -7,7 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import * as io from 'socket.io-client';
 import registerServiceWorker from './registerServiceWorker';
 
-import { setState } from './store/actions/actions';
+import { setState } from './store/actions';
 import reducer from './store/reducer';
 import remoteActionMiddleware from './store/remote-action-middleware';
 

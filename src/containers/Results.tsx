@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import Winner from '../components/Winner';
-import * as actions from '../store/actions/actions';
+import * as actions from '../store/actions';
 
 export interface IProps {
   pair: string[],
