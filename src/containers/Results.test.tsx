@@ -24,11 +24,11 @@ describe('Results', () => {
 
     expect(entries).toHaveLength(2);
 
-    expect(renderedText(entries, 0)).toBe(props.pair[0]);
-    expect(renderedText(entries, 1)).toBe(props.pair[1]);
+    expect(renderedText(entries.at(0))).toBe(props.pair[0]);
+    expect(renderedText(entries.at(1))).toBe(props.pair[1]);
 
-    expect(renderedText(tallies, 0)).toBe('5');
-    expect(renderedText(tallies, 1)).toBe('0');
+    expect(renderedText(tallies.at(0))).toBe('5');
+    expect(renderedText(tallies.at(1))).toBe('0');
   });
 
   it('invokes the next callback when next button is clicked', () => {
