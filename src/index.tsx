@@ -11,7 +11,7 @@ import { setState } from './store/actions/actions';
 import reducer from './store/reducer';
 import remoteActionMiddleware from './store/remote-action-middleware';
 
-import App from './App';
+import App from './components/App';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 
