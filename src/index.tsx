@@ -8,15 +8,15 @@ import * as io from 'socket.io-client';
 import registerServiceWorker from './registerServiceWorker';
 
 import { setState } from './store/actions';
+import { remoteAction } from './store/middleware';
 import reducer from './store/reducer';
-import remoteActionMiddleware from './store/remote-action-middleware';
 
 import App from './components/App';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 
 const store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(remoteActionMiddleware(socket))
+  applyMiddleware(remoteAction(socket))
 ));
 
 socket.on('state', state => {
