@@ -1,8 +1,9 @@
 import { expect } from 'chai';
 import 'mocha';
 
-import reducer from './reducer';
+import * as actionTypes from './actionTypes';
 import { INITIAL_STATE } from './core';
+import reducer from './reducer';
 
 describe('core logic reducer', () => {
   let state;
@@ -14,7 +15,7 @@ describe('core logic reducer', () => {
 
   it('handles SET_ENTRIES', () => {
     const action = { 
-      type: 'SET_ENTRIES', 
+      type: actionTypes.SET_ENTRIES, 
       entries: ['Germany']
     };
     expectedState = {
@@ -29,7 +30,7 @@ describe('core logic reducer', () => {
 
   it('handles NEXT', () => {
     state.entries = ['Germany', 'Spain'];
-    const action = { type: 'NEXT' };
+    const action = { type: actionTypes.NEXT };
     expectedState = {
       entries: [],
       vote: {
@@ -48,7 +49,7 @@ describe('core logic reducer', () => {
       tally: {}
     };
     const action = {
-      type: 'VOTE', 
+      type: actionTypes.VOTE, 
       entry: 'Germany'
     };
     expectedState = {
