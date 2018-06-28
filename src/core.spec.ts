@@ -11,17 +11,13 @@ describe('application logic', () => {
     state = { ...INITIAL_STATE };
   });
 
-  afterEach(() => {
-    state = { ...INITIAL_STATE };
-  });
-
   describe('setEntries', () => {
     it('adds the entries to the state', () => {
       const entries = ['Germany', 'Spain'];
       state.entries = entries;
       expectedState = {
         ...state,
-        entries: ['Germany', 'Spain']
+        entries
       };
 
       const nextState = setEntries(state, entries);
@@ -109,10 +105,6 @@ describe('application logic', () => {
     let voteState: EntriesState['vote'];
 
     beforeEach(() => {
-      voteState = { ...state.vote };
-    });
-
-    afterEach(() => {
       voteState = { ...state.vote };
     });
 
